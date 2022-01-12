@@ -8,4 +8,4 @@ while (n >= 50) {
   countIter++
 }
 
-console.log(`n = ${n}\n count iteration = ${countIter}`)
+console.log(`n = ${n}\ncount iteration = ${countIter}`)
