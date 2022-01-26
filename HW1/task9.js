@@ -23,12 +23,3 @@ function sortArray(arr, direction = 'asc') {
 }
 
 console.log(sortArray(arr, 'desc'))
-
-//Дефолтная сортировка работает куда лучше
-console.time('testSort')
-sortArray(arr, 'desc')
-console.timeEnd('testSort')
-
-console.time('testDefSort')
-arr.sort((a, b) => a - b)
-console.timeEnd('testDefSort')
