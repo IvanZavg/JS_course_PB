@@ -25,17 +25,38 @@ function solution(a, b) {
   return newArr.reverse()
 }
 
-console.log(solution([2, 4, 3], [5, 6, 4])) // [8, 0, 7]
-console.log(solution([1, 4, 5], [4, 4, 2])) // [5, 8, 7]
-console.log(solution([1, 1, 1], [])) // [1, 1, 1]
-console.log(solution([], [9, 9, 9])) // [9, 9, 9]
-console.log(solution([9, 9, 9], [9, 9, 9])) // [1, 9, 9, 8]
-console.log(solution([], [])) // []
-console.log(solution([], [0])) // [0]
-console.log(solution([0], [0])) // [0]
-console.log(solution([1, 1, 1, 1, 1, 1, 1, 1], [1, 0])) // [1, 1, 1, 1, 1, 1, 2, 1]
+function checkOnArrayOfNumbers(arr) {
+  if (!Array.isArray(arr)) return 'not array!'
+  if (arr.some((item) => typeof item !== 'number')) return 'array contains not number types!'
+  return null
+}
+
+// Вариант 2
+function solution2(a, b) {
+  const errorA = checkOnArrayOfNumbers(a)
+  if (errorA) throw new Error(`First argument has error: ${errorA}`)
+
+  const errorB = checkOnArrayOfNumbers(a)
+  if (errorB) throw new Error(`First argument has error: ${errorB}`)
+
+  if (!a.length && !b.length) return []
+
+  const sumArrString = (BigInt(a.join('')) + BigInt(b.join(''))).toString().split('')
+
+  return sumArrString.map((item) => Number(item))
+}
+
+console.log(solution2([2, 4, 3], [5, 6, 4])) // [8, 0, 7]
+console.log(solution2([1, 4, 5], [4, 4, 2])) // [5, 8, 7]
+console.log(solution2([1, 1, 1], [])) // [1, 1, 1]
+console.log(solution2([], [9, 9, 9])) // [9, 9, 9]
+console.log(solution2([9, 9, 9], [9, 9, 9])) // [1, 9, 9, 8]
+console.log(solution2([], [])) // []
+console.log(solution2([], [0])) // [0]
+console.log(solution2([0], [0])) // [0]
+console.log(solution2([1, 1, 1, 1, 1, 1, 1, 1], [1, 0])) // [1, 1, 1, 1, 1, 1, 2, 1]
 console.log(
-  solution([9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9], [1])
+  solution2([9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9], [1])
 )
 // // [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 // // [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
