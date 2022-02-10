@@ -37,7 +37,7 @@ function solution2(a, b) {
   if (errorA) throw new Error(`First argument has error: ${errorA}`)
 
   const errorB = checkOnArrayOfNumbers(a)
-  if (errorB) throw new Error(`First argument has error: ${errorB}`)
+  if (errorB) throw new Error(`Second argument has error: ${errorB}`)
 
   if (!a.length && !b.length) return []
 
